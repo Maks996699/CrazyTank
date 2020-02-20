@@ -15,6 +15,13 @@ ObjectOnBattlefield::ObjectOnBattlefield(int x, int y, char skin) : skin(skin)
 	pos.y = y;
 }
 
+ObjectOnBattlefield::ObjectOnBattlefield(char skin)
+{
+	pos.x = 0;
+	pos.y = 0;
+	this->skin = skin;
+}
+
 
 ObjectOnBattlefield::~ObjectOnBattlefield()
 {

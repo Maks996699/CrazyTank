@@ -3,6 +3,7 @@
 #include <iostream>
 #include <Windows.h>
 #include "ObjectOnBattlefield.h"
+#include "Tank.h"
 
 class Battlefield
 {
@@ -14,7 +15,7 @@ public:
 	char get_symbol(int x, int y);
 
 private:
-	ObjectOnBattlefield** battlefield_arr;
+	ObjectOnBattlefield*** battlefield_arr;
 	int width;
 	int height;
 };

@@ -18,7 +18,8 @@ public:
 	/*virtual*/ void move_left()/* = 0*/;
 	/*virtual*/ void move_right()/* = 0*/;
 	/*virtual*/ void shot(Direct direction)/* = 0*/;
+	/*virtual*/ char showSkin();
 	Coord get_pos();
 private:
 	Direct direction;
-};
+}; 

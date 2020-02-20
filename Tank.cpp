@@ -1,6 +1,6 @@
 #include "Tank.h"
 
-Tank::Tank() : ObjectOnBattlefield()
+Tank::Tank() : ObjectOnBattlefield('#')
 {
 	direction = Direct::up;
 
@@ -53,6 +53,11 @@ void Tank::shot(Direct direction)
 	default:
 		break;
 	}
+}
+
+char Tank::showSkin()
+{
+	return skin;
 }
 
 Coord Tank::get_pos()

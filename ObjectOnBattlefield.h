@@ -7,8 +7,9 @@ class ObjectOnBattlefield
 public:
 	ObjectOnBattlefield();
 	ObjectOnBattlefield(int x, int y, char skin = ' ');
+	ObjectOnBattlefield(char skin);
 	virtual ~ObjectOnBattlefield();
-	char showSkin();
+	virtual char showSkin();
 protected:
 	Coord pos;
 	char skin;
