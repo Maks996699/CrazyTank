@@ -20,6 +20,8 @@ public:
 	/*virtual*/ void shot(Direct direction)/* = 0*/;
 	/*virtual*/ char showSkin();
 	Coord get_pos();
+	int getX();
+	int getY();
 private:
 	Direct direction;
 }; 

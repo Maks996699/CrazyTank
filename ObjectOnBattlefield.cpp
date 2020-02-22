@@ -6,7 +6,7 @@ ObjectOnBattlefield::ObjectOnBattlefield() //: pos(Coord())
 {
 	pos.x = 0;
 	pos.y = 0;
-	skin = ' ';
+	skin = '.';
 }
 
 ObjectOnBattlefield::ObjectOnBattlefield(int x, int y, char skin) : skin(skin)
@@ -30,4 +30,30 @@ ObjectOnBattlefield::~ObjectOnBattlefield()
 char ObjectOnBattlefield::showSkin()
 {
 	return skin;
+}
+
+int ObjectOnBattlefield::getX()
+{
+	return pos.x;
+}
+
+int ObjectOnBattlefield::getY()
+{
+	return pos.y;
+}
+
+void ObjectOnBattlefield::move_up()
+{
+}
+
+void ObjectOnBattlefield::move_down()
+{
+}
+
+void ObjectOnBattlefield::move_left()
+{
+}
+
+void ObjectOnBattlefield::move_right()
+{
 }

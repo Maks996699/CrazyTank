@@ -64,3 +64,13 @@ Coord Tank::get_pos()
 {
 	return pos;
 }
+
+int Tank::getX()
+{
+	return pos.x;
+}
+
+int Tank::getY()
+{
+	return pos.y;
+}
