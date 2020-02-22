@@ -2,8 +2,9 @@
 
 #include "Battlefield.h"
 
-const char ArrowUp = 72;
-const char ArrowDown = 80;
-const char ArrowLeft = 75;
-const char ArrowRight = 77;
-const char Space = 32;
+const int ArrowUpKey = 72;
+const int ArrowDownKey = 80;
+const int ArrowLeftKey = 75;
+const int ArrowRightKey = 77;
+const int SpaceKey = 32;
+const int EscapeKey = 27;
