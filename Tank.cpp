@@ -24,12 +24,12 @@ void Tank::set(int x, int y, Direct direction)
 
 void Tank::move_up()
 {
-	pos.y++;
+	pos.y--;
 }
 
 void Tank::move_down()
 {
-	pos.y--;
+	pos.y++;
 }
 
 void Tank::move_left()

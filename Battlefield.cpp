@@ -41,13 +41,13 @@ void Battlefield::show() const
 
 void Battlefield::setInArrTank(int x, int y)
 {
-	delete battlefield_arr[x][y];
-	battlefield_arr[x][y] = userTank = new Tank(x, y, Direct::up);
+	delete battlefield_arr[y][x];
+	battlefield_arr[y][x] = userTank = new Tank(x, y, Direct::up);
 }
 
 char Battlefield::get_symbol(int x, int y)
 {
-	return battlefield_arr[x][y]->showSkin();
+	return battlefield_arr[y][x]->showSkin();
 }
 
 void Battlefield::start(const int MoveUp, const int MoveDown, const int MoveRight, const int MoveLeft, const int Shot, const int Exit)
@@ -56,6 +56,7 @@ void Battlefield::start(const int MoveUp, const int MoveDown, const int MoveRigh
 	while(input != Exit) 
 	{
 		show();
+		std::cout << "X: " << userTank->getX() << " Y: " << userTank->getY();
 
 		input = _getwch();
 		if(input == 0 || input == 0xE0)  //When reading a function key or an arrow key, each function must be called twice,
@@ -63,6 +64,7 @@ void Battlefield::start(const int MoveUp, const int MoveDown, const int MoveRigh
 			input = _getwch();
 		}
 		
+
 		if (input == MoveUp)
 		{
 			userTankUp();
@@ -86,6 +88,7 @@ void Battlefield::start(const int MoveUp, const int MoveDown, const int MoveRigh
 
 
 		system("cls");
+		
 
 
 	}
@@ -93,52 +96,60 @@ void Battlefield::start(const int MoveUp, const int MoveDown, const int MoveRigh
 
 void Battlefield::userTankUp()
 {
-	ObjectOnBattlefield* tmp = battlefield_arr[userTank->getX()][userTank->getY() + 1];
+	if (userTank->getY() > 0) {
+		ObjectOnBattlefield* tmp = battlefield_arr[userTank->getY() - 1][userTank->getX()];
 
-	battlefield_arr[userTank->getX()][userTank->getY() + 1] = userTank;
+		battlefield_arr[userTank->getY() - 1][userTank->getX()] = userTank;
 
-	battlefield_arr[userTank->getX()][userTank->getY()] = tmp;
+		battlefield_arr[userTank->getY()][userTank->getX()] = tmp;
 
-	userTank = battlefield_arr[userTank->getX()][userTank->getY() + 1];
+		userTank = battlefield_arr[userTank->getY() - 1][userTank->getX()];
 
-	userTank->move_up();
+		userTank->move_up();
+	}
 }
 
 void Battlefield::userTankDown()
 {
-	ObjectOnBattlefield* tmp = battlefield_arr[userTank->getX()][userTank->getY() - 1];
+	if (userTank->getY() < height - 1) {
+		ObjectOnBattlefield* tmp = battlefield_arr[userTank->getY() + 1][userTank->getX()];
 
-	battlefield_arr[userTank->getX()][userTank->getY() - 1] = userTank;
+		battlefield_arr[userTank->getY() + 1][userTank->getX()] = userTank;
 
-	battlefield_arr[userTank->getX()][userTank->getY()] = tmp;
+		battlefield_arr[userTank->getY()][userTank->getX()] = tmp;
 
-	userTank = battlefield_arr[userTank->getX()][userTank->getY() - 1];
+		userTank = battlefield_arr[userTank->getY() + 1][userTank->getX()];
 
-	userTank->move_down();
+		userTank->move_down();
+	}
 }
 
 void Battlefield::userTankLeft()
 {
-	ObjectOnBattlefield* tmp = battlefield_arr[userTank->getX() - 1][userTank->getY()];
+	if (userTank->getX() > 0) {
+		ObjectOnBattlefield* tmp = battlefield_arr[userTank->getY()][userTank->getX() - 1];
 
-	battlefield_arr[userTank->getX() - 1][userTank->getY()] = userTank;
+		battlefield_arr[userTank->getY()][userTank->getX() - 1] = userTank;
 
-	battlefield_arr[userTank->getX()][userTank->getY()] = tmp;
+		battlefield_arr[userTank->getY()][userTank->getX()] = tmp;
 
-	userTank = battlefield_arr[userTank->getX() - 1][userTank->getY()];
+		userTank = battlefield_arr[userTank->getY()][userTank->getX() - 1];
 
-	userTank->move_left();
+		userTank->move_left();
+	}
 }
 
 void Battlefield::userTankRight()
 {
-	ObjectOnBattlefield* tmp = battlefield_arr[userTank->getX() + 1][userTank->getY()];
+	if (userTank->getX() < width - 1) {
+		ObjectOnBattlefield* tmp = battlefield_arr[userTank->getY()][userTank->getX() + 1];
 
-	battlefield_arr[userTank->getX() + 1][userTank->getY()] = userTank;
+		battlefield_arr[userTank->getY()][userTank->getX() + 1] = userTank;
 
-	battlefield_arr[userTank->getX()][userTank->getY()] = tmp;
+		battlefield_arr[userTank->getY()][userTank->getX()] = tmp;
 
-	userTank = battlefield_arr[userTank->getX() + 1][userTank->getY()];
+		userTank = battlefield_arr[userTank->getY()][userTank->getX() + 1];
 
-	userTank->move_right();
+		userTank->move_right();
+	}
 }
